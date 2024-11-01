@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://cuumpaj53bqug"]
+[gd_scene load_steps=7 format=4 uid="uid://cuumpaj53bqug"]
 
 [ext_resource type="PackedScene" uid="uid://joyto45tvj4c" path="res://scenes/player.tscn" id="1_0nkfd"]
 [ext_resource type="Texture2D" uid="uid://bg8r6cx3dhbw0" path="res://assets/tilemap.png" id="2_70rp8"]
+[ext_resource type="Script" path="res://scripts/pivot.gd" id="3_a8gg0"]
+[ext_resource type="PackedScene" uid="uid://dq8utvce70x2o" path="res://scenes/chain.tscn" id="3_hye5l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_55uwm"]
 texture = ExtResource("2_70rp8")
@@ -156,9 +158,18 @@ tile_map_data = PackedByteArray("AAAEAAcAAAACAAEAAAAFAAcAAAACAAEAAAAGAAcAAAACAAE
 tile_set = SubResource("TileSet_pyotd")
 
 [node name="Player" parent="." instance=ExtResource("1_0nkfd")]
-position = Vector2(169, 106)
+position = Vector2(110, 120)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -1)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+
+[node name="pivot" type="Node2D" parent="."]
+position = Vector2(110, 104)
+rotation = -1.5708
+script = ExtResource("3_a8gg0")
+
+[node name="chain" parent="pivot" instance=ExtResource("3_hye5l")]
+position = Vector2(2, 1)
+rotation = 0.0
